@@ -1,6 +1,6 @@
-package com.example.mongo.api.model;
+package com.example.mongo.api.dto;
 
-public class Traveller {
+public class TravellerDto {
 	
 	private long id;
 	private String name;

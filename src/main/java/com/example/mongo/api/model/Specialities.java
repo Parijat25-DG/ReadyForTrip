@@ -12,7 +12,7 @@ import lombok.ToString;
 @Getter
 @ToString
 
-@Document(collection = "Hotel")
+@Document(collection = "Specialities")
 public class Specialities {
 	
 	@Id

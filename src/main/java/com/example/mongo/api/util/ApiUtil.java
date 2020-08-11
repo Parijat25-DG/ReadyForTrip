@@ -13,7 +13,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-import com.example.mongo.api.model.Traveller;
+import com.example.mongo.api.dto.TravellerDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 
@@ -35,7 +35,7 @@ public class ApiUtil {
 		mapper = new ObjectMapper();
 	}
 
-	public Long registerTraveller(Traveller traveller) {
+	public Long registerTraveller(TravellerDto traveller) {
 		Long response = null;
 		String jsonRequest = null;
 		String result = "";
@@ -54,8 +54,8 @@ public class ApiUtil {
 
 	}
 
-	public Traveller retrieveByEmail(String email) {
-		Traveller response = null;
+	public TravellerDto retrieveByEmail(String email) {
+		TravellerDto response = null;
 		String result = "";
 		String URL = "";
 		String request = "{\r\n" + 
@@ -70,7 +70,7 @@ public class ApiUtil {
 			URL = env.getProperty("retrieve.url");
 			HttpEntity<String> entity = new HttpEntity<String>(request, headers);
 			result = template.postForObject(URL, entity, String.class);
-			response = mapper.readValue(result, Traveller.class);
+			response = mapper.readValue(result, TravellerDto.class);
 		} catch (IOException e) {
 			System.out.println("ERROR : " + e.getMessage());
 		}
